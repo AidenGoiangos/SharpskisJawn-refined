@@ -26,7 +26,7 @@ public class CollisionChecker {
         int bottomSideTileRow = bottomSideWorldY/ gp.tileSize;
 
         int tile1, tile2;
-
+        System.out.println(w.worldX + " , " + w.worldY);
         switch(w.direction){
             case "up":
 
