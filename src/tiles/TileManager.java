@@ -26,7 +26,12 @@ public class TileManager {
         //init with height and width of map (could be replaced gp.maxWorldCol) etc
         mapTileNum = new int[50][50];
         getTileImage();
-        loadMap();
+        try{
+            loadMap();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public void getTileImage() {
@@ -68,41 +73,38 @@ public class TileManager {
         }
     }
 
-    public void loadMap() {
-
+    public void loadMap(){
         String[] numbers;
         String line;
-        Scanner scanner;
-
-
-
-
-
-
-
-
+        int counter;
+        InputStream is = getClass().getClassLoader().getResourceAsStream("maps/worldMap.txt");
+        BufferedReader br = new BufferedReader(new InputStreamReader(is));
 
         try {
-            File map = new File("maps/worldMap.txt");
-            BufferedReader br = new BufferedReader(new FileReader(map));
+
+
             line = br.readLine();
             System.out.println(line);
             numbers = line.split(" ");
 
-                for (int j = 0; j < gp.maxWorldRow; j++ ) {
-                    for(int k = 0; k < gp.maxWorldCol; k++){
-                        int num = Integer.parseInt(numbers[(j* gp.maxWorldRow) + k]);
-                        mapTileNum[j][k] = num;
+            //copy array using this to avoid issue
+            for(String k : line.split(" ")){
 
-                    }
+            }
+            System.out.println(numbers.length);
+            for (int j = 0; j < gp.maxWorldRow; j++ ) {
+                for(int k = 0; k < gp.maxWorldCol; k++){
+                    int num = Integer.parseInt(numbers[(j* gp.maxWorldRow) + k]);
+                    mapTileNum[j][k] = num;
 
                 }
+
+            }
         } catch (Exception e) {
             e.getStackTrace();
 
         }
     }
-
     public void draw(Graphics2D g2) {
 
 
