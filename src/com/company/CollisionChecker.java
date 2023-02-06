@@ -16,9 +16,9 @@ public class CollisionChecker {
     public void checkTile(Entity w){
 
         int closeSideWorldX = w.worldX + w.solidArea.x;
-        int farSideWorldX = w.worldX + gp.tileSize;
-        int topSideWorldY = w.worldY;
-        int bottomSideWorldY = w.worldY + gp.tileSize;
+        int farSideWorldX = w.worldX + w.solidArea.x + w.solidArea.width;
+        int topSideWorldY = w.worldY + w.solidArea.y;
+        int bottomSideWorldY = w.worldY + w.solidArea.y + w.solidArea.height;
 
         int closeSideTileCol = closeSideWorldX/gp.tileSize;
         int farSideTileCol = farSideWorldX/gp.tileSize;
