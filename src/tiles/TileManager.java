@@ -5,11 +5,13 @@ import javax.imageio.ImageIO;
 import com.company.GamePanel;
 
 import java.awt.*;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.awt.image.BufferedImage;
+import java.io.*;
+import java.io.File;
+import java.security.spec.RSAOtherPrimeInfo;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Scanner;
 
 public class TileManager {
     GamePanel gp;
@@ -30,27 +32,36 @@ public class TileManager {
     public void getTileImage() {
         try {
             tile[0] = new Tile();
-            tile[0].image = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("tiles/floorTile.png")));
+            tile[0].image = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("tiles/basicGrass.png")));
 
             tile[1] = new Tile();
-            tile[1].image = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("tiles/backTile.png")));
+            tile[1].image = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("tiles/basicGrass.png")));
 
             //grassFloor
             tile[2] = new Tile();
-            tile[2].image = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("tiles/grassFloor.png")));
+            tile[2].image = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("tiles/basicGrass.png")));
 
             //grassFloor2
             tile[3] = new Tile();
-            tile[3].image = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("tiles/grassFloorTwo.png")));
+            tile[3].image = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("tiles/colorfulFlower.png")));
 
             //deepWater
             tile[4] = new Tile();
             tile[4].image = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("tiles/deepWater.png")));
             tile[4].collision = true;
 
-            //shoreWater
+            //middle deep water
             tile[5] = new Tile();
-            tile[5].image = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("tiles/shoreWater.png")));
+            tile[5].image = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("tiles/middleDeep.png")));
+
+            //shallow
+            tile[6] = new Tile();
+            tile[6].image = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("tiles/shallowWater.png")));
+
+            //beach sand
+            //shallow
+            tile[7] = new Tile();
+            tile[7].image = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("tiles/beachSand.png")));
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -61,15 +72,23 @@ public class TileManager {
 
         String[] numbers;
         String line;
-        InputStream is = getClass().getClassLoader().getResourceAsStream("maps/worldMap.txt");
-        BufferedReader br = new BufferedReader(new InputStreamReader(is));
+        Scanner scanner;
+
+
+
+
+
+
+
+
 
         try {
-
-
+            File map = new File("maps/worldMap.txt");
+            BufferedReader br = new BufferedReader(new FileReader(map));
             line = br.readLine();
+            System.out.println(line);
             numbers = line.split(" ");
-            System.out.println(numbers.length);
+
                 for (int j = 0; j < gp.maxWorldRow; j++ ) {
                     for(int k = 0; k < gp.maxWorldCol; k++){
                         int num = Integer.parseInt(numbers[(j* gp.maxWorldRow) + k]);

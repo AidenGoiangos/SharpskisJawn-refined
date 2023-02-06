@@ -32,8 +32,7 @@ public class CollisionChecker {
 
                 tile1 = gp.tileManager.mapTileNum[topSideTileRow][closeSideTileCol];
                 tile2 = gp.tileManager.mapTileNum[topSideTileRow][farSideTileCol];
-                System.out.println( w.worldX + " , " + w.worldY);
-                System.out.println(tile1 + " , " + tile2);
+
                 if(gp.tileManager.tile[tile1].collision || gp.tileManager.tile[tile2].collision){
                     w.collisionOn = true;
                 }
