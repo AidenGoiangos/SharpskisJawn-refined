@@ -46,14 +46,15 @@ public class TileManager {
             tile[2] = new Tile();
             tile[2].image = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("tiles/basicGrass.png")));
 
-            //grassFloor2
+            //Rock
             tile[3] = new Tile();
             tile[3].image = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("tiles/rockOnGrass.png")));
             tile[3].collision = true;
+
             //deepWater
             tile[4] = new Tile();
             tile[4].image = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("tiles/deepWater.png")));
-
+            tile[4].collision = true;
 
             //middle deep water
             tile[5] = new Tile();

@@ -63,6 +63,10 @@ public class CollisionChecker {
         }
     }
 
+    public void checkObject(Entity w, boolean player){
+
+    }
+
         }
 
 

@@ -1,6 +1,7 @@
 package com.company;
 
 import javax.swing.*;
+import java.util.Scanner;
 
 public class Main {
 
@@ -19,6 +20,8 @@ public class Main {
         window.setVisible(true);
         gamePanel.setUpGame();
         gamePanel.startGameThread();
+
+
 
 
 
